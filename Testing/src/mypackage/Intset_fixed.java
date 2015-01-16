@@ -9,7 +9,7 @@ protected Vector<Integer> els;
 
 
 public  void mcdc(int a,int b){
-	int x;
+	int x;//
 	if((a==0)&&(b>a))
 		x=b/ 1;	
 	else
