@@ -1,0 +1,690 @@
+<?xml version="1.0" encoding="UTF-8"?><TestSessionContainer xmlns="http://www.codecover.org/xml/testsession-container" Date="1401379097702" TestSessionContainerId="a33d0fe8-e350-4410-995a-602d11139bb3" version="1.0">
+<SrcFileList>
+<SrcFile Content="package mypackage;&#13;&#10;import static org.junit.Assert.*;&#13;&#10;&#13;&#10;import java.util.Vector;&#13;&#10;&#13;&#10;import mypackage.Intset_fixed.EmptyException;&#13;&#10;&#13;&#10;import org.junit.Before;&#13;&#10;import org.junit.Test;&#13;&#10;/*&#13;&#10;* @author Thierry Noumessi&#13;&#10;* &#13;&#10;* This class shows that the contract of using&#13;&#10;* the clone() method is respected&#13;&#10;* in both super and sub class&#13;&#10;* &#13;&#10;*/&#13;&#10;public class IntSet_fixedText {&#13;&#10;private Intset_fixed is= new Intset_fixed();&#13;&#10;private Intset_fixed isn=new IntSet_sub_fixed();&#13;&#10;private Intset_fixed is1= new Intset_fixed();&#13;&#10;private Intset_fixed isn2=new IntSet_sub_fixed();&#13;&#10;@Before  // Set up - Called before every test method.&#13;&#10;public void setUp() {&#13;&#10;is.insert(10); &#13;&#10;isn.insert(15); &#13;&#10;&#13;&#10;}&#13;&#10;//begin test fo the intset&#13;&#10;@Test //Test of x.clone().equals(x) for the super intset&#13;&#10;public void test_Inset_equals() { &#13;&#10;assertEquals(&quot;this test passes. According to the clone contract it should return true&quot;,true, is.clone().equals(is));&#13;&#10;}&#13;&#10;@Test //test of x.clone().getClass() == x.getClass()&#13;&#10;public void test_Inset_Getclass() {&#13;&#10;//assertEquals(&quot;this test passes. According to the clone contract it should return true&quot;,true, is.clone().getClass()==is.getClass());&#13;&#10;}&#13;&#10;@Test //x.clone()!=x&#13;&#10;public void test_Inset_clone() {     &#13;&#10;//assertEquals(&quot;the contract says that this should be false, &quot;,true, is.clone()!=is);&#13;&#10;}&#13;&#10;//end test for the intset&#13;&#10;//begin test fot the intset_sub&#13;&#10;@Test //test of x.clone().getClass() == x.getClass()&#13;&#10;public void test_Inset_sub_Getclass() {&#13;&#10;//assertEquals(&quot;this test fails. According to the clone contract it should return true&quot;,true, isn.clone().getClass()==isn.getClass());&#13;&#10;}&#13;&#10;@Test  //Test of x.clone().equals(x). &#13;&#10;public void test_Inset_sub_equals() { &#13;&#10;//x.clone().equals(x)&#13;&#10;assertEquals(&quot;this test passes. According to the clone contract it should return true&quot;,true, isn.clone().equals(isn));&#13;&#10;}&#13;&#10;@Test //x.clone()!=x&#13;&#10;public void test_Inset_sub_clone() {   &#13;&#10;/*assertEquals(&quot;the documentation says that should be false, &quot;,true, &#13;&#10;isn.clone()!=isn); */      &#13;&#10;}&#13;&#10;@Test //x.choose()&#13;&#10;public void test_Inset_empty1() {   &#13;&#10;/*assertEquals(&quot;the documentation says that should be false, &quot;,true, &#13;&#10;is.choose()==10);  */     &#13;&#10;&#9;is1.insert(0);&#13;&#10;&#9;is1.insert(0);&#13;&#10;} &#13;&#10;@Test //x.choose()&#13;&#10;public void test_Inset_empt51() {   &#13;&#10;&#9;&#13;&#10;assertEquals(&quot;the documentation says that should be false, &quot;,false, is.choose()==100);   &#13;&#10;//is1.choose();&#13;&#10;&#13;&#10;}&#13;&#10;@Test (expected=EmptyException.class) //x.choose()&#13;&#10;public void test_Inset_empty2() throws EmptyException {   &#13;&#10;&#9;&#13;&#10;&#9;is1.choose();&#13;&#10;}&#13;&#10;&#13;&#10;@Test //(expected=EmptyException.class) //x.choose()&#13;&#10;public void test_Inset_mcdc() {  &#13;&#10;&#9;is.mcdc(0,5);&#13;&#10;&#9;is.mcdc(5,5);&#13;&#10;&#9;is.mcdc(0,2);&#13;&#10;&#9;&#13;&#10;&#13;&#10;}&#13;&#10;&#13;&#10;@Test  //x.choose()&#13;&#10;public void test_Inset_sub_size3() {   &#13;&#10;&#9; Intset_fixed iss= new Intset_fixed();&#13;&#10;&#9;iss.size();&#13;&#10;}&#13;&#10;@Test //x.choose()&#13;&#10;public void test_Inset_isin() {   &#13;&#10;assertEquals(&quot;the documentation says that should be false, &quot;,true, &#13;&#10;is.isIn(10));       &#13;&#10;}&#13;&#10;@Test //x.choose()&#13;&#10;public void test_Inset_isin2() {   &#13;&#10;assertEquals(&quot;the documentation says that should be false, &quot;,false, &#13;&#10;is.isIn(1));  &#13;&#10;is.insert(9);&#13;&#10;is.insert(9);&#13;&#10;/*assertEquals(&quot;the documentation says that should be false, &quot;,true, &#13;&#10;is.size()==2);  */&#13;&#10;Intset_fixed p=new Intset_fixed(new Vector&lt;Integer&gt;());&#13;&#10;p.toString();&#13;&#10;String s=&quot;52&quot;;&#13;&#10;p.equals(s);&#13;&#10;is.remove(9);&#13;&#10;is.remove(89);&#13;&#10;}&#13;&#10;// end test for the intset_sub&#13;&#10;} " Filename="IntSet_fixedText.java" Intrnl_Id="1"/>
+</SrcFileList>
+<CritList>
+<CritListEntry Name="org.codecover.model.utils.criteria.LoopCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.BranchCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.ConditionCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.SynchronizedStatementCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.QMOCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.StatementCoverage" PluginName="org.codecover"/>
+</CritList>
+<BoolOpList/>
+<HierarchyLvlTypeList>
+<HierarchyLvlType EnglishName="package" IntrnlName="package" Intrnl_Id="2"/>
+<HierarchyLvlType EnglishName="class" IntrnlName="class" Intrnl_Id="3"/>
+<HierarchyLvlType EnglishName="method" IntrnlName="method" Intrnl_Id="4"/>
+<HierarchyLvlType EnglishName="default package" IntrnlName="default package" Intrnl_Id="5"/>
+</HierarchyLvlTypeList>
+<MASTRoot>
+<HierarchyLvl HierarchyLvlId="73" HierarchyLvlTypeId="5" Intrnl_Id="6" Name="default package">
+<Header/>
+<LocList/>
+<HierarchyLvl HierarchyLvlId="72" HierarchyLvlTypeId="2" Intrnl_Id="7" Name="mypackage">
+<Header/>
+<LocList/>
+<HierarchyLvl HierarchyLvlId="71" HierarchyLvlTypeId="3" Intrnl_Id="8" Name="IntSet_fixedText">
+<Header>
+<Loc EndOffset="370" SrcFileId="1" StartOffset="341"/>
+</Header>
+<LocList>
+<Loc EndOffset="3350" SrcFileId="1" StartOffset="341"/>
+</LocList>
+<StmntSeq Intrnl_Id="9">
+<LocList>
+<Loc EndOffset="418" SrcFileId="1" StartOffset="374"/>
+<Loc EndOffset="468" SrcFileId="1" StartOffset="420"/>
+<Loc EndOffset="515" SrcFileId="1" StartOffset="470"/>
+<Loc EndOffset="566" SrcFileId="1" StartOffset="517"/>
+</LocList>
+<BasicStmnt CovItemId="S1" CovItemPrefix="mypackage.IntSet_fixedText.java" Intrnl_Id="10">
+<LocList>
+<Loc EndOffset="418" SrcFileId="1" StartOffset="374"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S2" CovItemPrefix="mypackage.IntSet_fixedText.java" Intrnl_Id="11">
+<LocList>
+<Loc EndOffset="468" SrcFileId="1" StartOffset="420"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S3" CovItemPrefix="mypackage.IntSet_fixedText.java" Intrnl_Id="12">
+<LocList>
+<Loc EndOffset="515" SrcFileId="1" StartOffset="470"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S4" CovItemPrefix="mypackage.IntSet_fixedText.java" Intrnl_Id="13">
+<LocList>
+<Loc EndOffset="566" SrcFileId="1" StartOffset="517"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<HierarchyLvl HierarchyLvlId="57" HierarchyLvlTypeId="4" Intrnl_Id="14" Name="setUp">
+<Header>
+<Loc EndOffset="642" SrcFileId="1" StartOffset="568"/>
+</Header>
+<LocList>
+<Loc EndOffset="684" SrcFileId="1" StartOffset="568"/>
+</LocList>
+<StmntSeq Intrnl_Id="15">
+<LocList>
+<Loc EndOffset="660" SrcFileId="1" StartOffset="646"/>
+<Loc EndOffset="678" SrcFileId="1" StartOffset="663"/>
+</LocList>
+<BasicStmnt CovItemId="S5" CovItemPrefix="mypackage.IntSet_fixedText.java" Intrnl_Id="16">
+<LocList>
+<Loc EndOffset="660" SrcFileId="1" StartOffset="646"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S6" CovItemPrefix="mypackage.IntSet_fixedText.java" Intrnl_Id="17">
+<LocList>
+<Loc EndOffset="678" SrcFileId="1" StartOffset="663"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="58" HierarchyLvlTypeId="4" Intrnl_Id="18" Name="test_Inset_equals">
+<Header>
+<Loc EndOffset="803" SrcFileId="1" StartOffset="714"/>
+</Header>
+<LocList>
+<Loc EndOffset="927" SrcFileId="1" StartOffset="714"/>
+</LocList>
+<StmntSeq Intrnl_Id="19">
+<LocList>
+<Loc EndOffset="924" SrcFileId="1" StartOffset="808"/>
+</LocList>
+<BasicStmnt CovItemId="S7" CovItemPrefix="mypackage.IntSet_fixedText.java" Intrnl_Id="20">
+<LocList>
+<Loc EndOffset="924" SrcFileId="1" StartOffset="808"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="59" HierarchyLvlTypeId="4" Intrnl_Id="21" Name="test_Inset_Getclass">
+<Header>
+<Loc EndOffset="1016" SrcFileId="1" StartOffset="929"/>
+</Header>
+<LocList>
+<Loc EndOffset="1156" SrcFileId="1" StartOffset="929"/>
+</LocList>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="60" HierarchyLvlTypeId="4" Intrnl_Id="22" Name="test_Inset_clone">
+<Header>
+<Loc EndOffset="1210" SrcFileId="1" StartOffset="1158"/>
+</Header>
+<LocList>
+<Loc EndOffset="1307" SrcFileId="1" StartOffset="1158"/>
+</LocList>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="61" HierarchyLvlTypeId="4" Intrnl_Id="23" Name="test_Inset_sub_Getclass">
+<Header>
+<Loc EndOffset="1460" SrcFileId="1" StartOffset="1369"/>
+</Header>
+<LocList>
+<Loc EndOffset="1601" SrcFileId="1" StartOffset="1369"/>
+</LocList>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="62" HierarchyLvlTypeId="4" Intrnl_Id="24" Name="test_Inset_sub_equals">
+<Header>
+<Loc EndOffset="1678" SrcFileId="1" StartOffset="1603"/>
+</Header>
+<LocList>
+<Loc EndOffset="1827" SrcFileId="1" StartOffset="1603"/>
+</LocList>
+<StmntSeq Intrnl_Id="25">
+<LocList>
+<Loc EndOffset="1824" SrcFileId="1" StartOffset="1706"/>
+</LocList>
+<BasicStmnt CovItemId="S8" CovItemPrefix="mypackage.IntSet_fixedText.java" Intrnl_Id="26">
+<LocList>
+<Loc EndOffset="1824" SrcFileId="1" StartOffset="1706"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="63" HierarchyLvlTypeId="4" Intrnl_Id="27" Name="test_Inset_sub_clone">
+<Header>
+<Loc EndOffset="1885" SrcFileId="1" StartOffset="1829"/>
+</Header>
+<LocList>
+<Loc EndOffset="1993" SrcFileId="1" StartOffset="1829"/>
+</LocList>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="64" HierarchyLvlTypeId="4" Intrnl_Id="28" Name="test_Inset_empty1">
+<Header>
+<Loc EndOffset="2046" SrcFileId="1" StartOffset="1995"/>
+</Header>
+<LocList>
+<Loc EndOffset="2187" SrcFileId="1" StartOffset="1995"/>
+</LocList>
+<StmntSeq Intrnl_Id="29">
+<LocList>
+<Loc EndOffset="2167" SrcFileId="1" StartOffset="2153"/>
+<Loc EndOffset="2184" SrcFileId="1" StartOffset="2170"/>
+</LocList>
+<BasicStmnt CovItemId="S9" CovItemPrefix="mypackage.IntSet_fixedText.java" Intrnl_Id="30">
+<LocList>
+<Loc EndOffset="2167" SrcFileId="1" StartOffset="2153"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S10" CovItemPrefix="mypackage.IntSet_fixedText.java" Intrnl_Id="31">
+<LocList>
+<Loc EndOffset="2184" SrcFileId="1" StartOffset="2170"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="65" HierarchyLvlTypeId="4" Intrnl_Id="32" Name="test_Inset_empt51">
+<Header>
+<Loc EndOffset="2241" SrcFileId="1" StartOffset="2190"/>
+</Header>
+<LocList>
+<Loc EndOffset="2362" SrcFileId="1" StartOffset="2190"/>
+</LocList>
+<StmntSeq Intrnl_Id="33">
+<LocList>
+<Loc EndOffset="2337" SrcFileId="1" StartOffset="2251"/>
+</LocList>
+<BasicStmnt CovItemId="S11" CovItemPrefix="mypackage.IntSet_fixedText.java" Intrnl_Id="34">
+<LocList>
+<Loc EndOffset="2337" SrcFileId="1" StartOffset="2251"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="66" HierarchyLvlTypeId="4" Intrnl_Id="35" Name="test_Inset_empty2">
+<Header>
+<Loc EndOffset="2469" SrcFileId="1" StartOffset="2364"/>
+</Header>
+<LocList>
+<Loc EndOffset="2496" SrcFileId="1" StartOffset="2364"/>
+</LocList>
+<StmntSeq Intrnl_Id="36">
+<LocList>
+<Loc EndOffset="2493" SrcFileId="1" StartOffset="2480"/>
+</LocList>
+<BasicStmnt CovItemId="S12" CovItemPrefix="mypackage.IntSet_fixedText.java" Intrnl_Id="37">
+<LocList>
+<Loc EndOffset="2493" SrcFileId="1" StartOffset="2480"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="67" HierarchyLvlTypeId="4" Intrnl_Id="38" Name="test_Inset_mcdc">
+<Header>
+<Loc EndOffset="2583" SrcFileId="1" StartOffset="2500"/>
+</Header>
+<LocList>
+<Loc EndOffset="2643" SrcFileId="1" StartOffset="2500"/>
+</LocList>
+<StmntSeq Intrnl_Id="39">
+<LocList>
+<Loc EndOffset="2603" SrcFileId="1" StartOffset="2590"/>
+<Loc EndOffset="2619" SrcFileId="1" StartOffset="2606"/>
+<Loc EndOffset="2635" SrcFileId="1" StartOffset="2622"/>
+</LocList>
+<BasicStmnt CovItemId="S13" CovItemPrefix="mypackage.IntSet_fixedText.java" Intrnl_Id="40">
+<LocList>
+<Loc EndOffset="2603" SrcFileId="1" StartOffset="2590"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S14" CovItemPrefix="mypackage.IntSet_fixedText.java" Intrnl_Id="41">
+<LocList>
+<Loc EndOffset="2619" SrcFileId="1" StartOffset="2606"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S15" CovItemPrefix="mypackage.IntSet_fixedText.java" Intrnl_Id="42">
+<LocList>
+<Loc EndOffset="2635" SrcFileId="1" StartOffset="2622"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="68" HierarchyLvlTypeId="4" Intrnl_Id="43" Name="test_Inset_sub_size3">
+<Header>
+<Loc EndOffset="2702" SrcFileId="1" StartOffset="2647"/>
+</Header>
+<LocList>
+<Loc EndOffset="2765" SrcFileId="1" StartOffset="2647"/>
+</LocList>
+<StmntSeq Intrnl_Id="44">
+<LocList>
+<Loc EndOffset="2748" SrcFileId="1" StartOffset="2711"/>
+<Loc EndOffset="2762" SrcFileId="1" StartOffset="2751"/>
+</LocList>
+<BasicStmnt CovItemId="S16" CovItemPrefix="mypackage.IntSet_fixedText.java" Intrnl_Id="45">
+<LocList>
+<Loc EndOffset="2748" SrcFileId="1" StartOffset="2711"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S17" CovItemPrefix="mypackage.IntSet_fixedText.java" Intrnl_Id="46">
+<LocList>
+<Loc EndOffset="2762" SrcFileId="1" StartOffset="2751"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="69" HierarchyLvlTypeId="4" Intrnl_Id="47" Name="test_Inset_isin">
+<Header>
+<Loc EndOffset="2816" SrcFileId="1" StartOffset="2767"/>
+</Header>
+<LocList>
+<Loc EndOffset="2915" SrcFileId="1" StartOffset="2767"/>
+</LocList>
+<StmntSeq Intrnl_Id="48">
+<LocList>
+<Loc EndOffset="2905" SrcFileId="1" StartOffset="2823"/>
+</LocList>
+<BasicStmnt CovItemId="S18" CovItemPrefix="mypackage.IntSet_fixedText.java" Intrnl_Id="49">
+<LocList>
+<Loc EndOffset="2905" SrcFileId="1" StartOffset="2823"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="70" HierarchyLvlTypeId="4" Intrnl_Id="50" Name="test_Inset_isin2">
+<Header>
+<Loc EndOffset="2967" SrcFileId="1" StartOffset="2917"/>
+</Header>
+<LocList>
+<Loc EndOffset="3315" SrcFileId="1" StartOffset="2917"/>
+</LocList>
+<StmntSeq Intrnl_Id="51">
+<LocList>
+<Loc EndOffset="3056" SrcFileId="1" StartOffset="2974"/>
+<Loc EndOffset="3073" SrcFileId="1" StartOffset="3060"/>
+<Loc EndOffset="3088" SrcFileId="1" StartOffset="3075"/>
+<Loc EndOffset="3236" SrcFileId="1" StartOffset="3181"/>
+<Loc EndOffset="3251" SrcFileId="1" StartOffset="3238"/>
+<Loc EndOffset="3267" SrcFileId="1" StartOffset="3253"/>
+<Loc EndOffset="3281" SrcFileId="1" StartOffset="3269"/>
+<Loc EndOffset="3296" SrcFileId="1" StartOffset="3283"/>
+<Loc EndOffset="3312" SrcFileId="1" StartOffset="3298"/>
+</LocList>
+<BasicStmnt CovItemId="S19" CovItemPrefix="mypackage.IntSet_fixedText.java" Intrnl_Id="52">
+<LocList>
+<Loc EndOffset="3056" SrcFileId="1" StartOffset="2974"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S20" CovItemPrefix="mypackage.IntSet_fixedText.java" Intrnl_Id="53">
+<LocList>
+<Loc EndOffset="3073" SrcFileId="1" StartOffset="3060"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S21" CovItemPrefix="mypackage.IntSet_fixedText.java" Intrnl_Id="54">
+<LocList>
+<Loc EndOffset="3088" SrcFileId="1" StartOffset="3075"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S22" CovItemPrefix="mypackage.IntSet_fixedText.java" Intrnl_Id="55">
+<LocList>
+<Loc EndOffset="3236" SrcFileId="1" StartOffset="3181"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S23" CovItemPrefix="mypackage.IntSet_fixedText.java" Intrnl_Id="56">
+<LocList>
+<Loc EndOffset="3251" SrcFileId="1" StartOffset="3238"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S24" CovItemPrefix="mypackage.IntSet_fixedText.java" Intrnl_Id="57">
+<LocList>
+<Loc EndOffset="3267" SrcFileId="1" StartOffset="3253"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S25" CovItemPrefix="mypackage.IntSet_fixedText.java" Intrnl_Id="58">
+<LocList>
+<Loc EndOffset="3281" SrcFileId="1" StartOffset="3269"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S26" CovItemPrefix="mypackage.IntSet_fixedText.java" Intrnl_Id="59">
+<LocList>
+<Loc EndOffset="3296" SrcFileId="1" StartOffset="3283"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S27" CovItemPrefix="mypackage.IntSet_fixedText.java" Intrnl_Id="60">
+<LocList>
+<Loc EndOffset="3312" SrcFileId="1" StartOffset="3298"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+</HierarchyLvl>
+</HierarchyLvl>
+</MASTRoot>
+<TestSession Comment="" Date="1401379158112" Name="May 29, 2014 8:59:18 AM">
+<TestCase Comment="" Date="1401379157952" Name="mypackage.IntSet_fixedText:test_Inset_equals">
+<CovList>
+<CovPrefix CovItemPrefix="mypackage.IntSet_fixedText.java">
+<Cov CovItemId="S5" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+<Cov CovItemId="S7" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList/>
+<ObjMetaDataList/>
+<MetaDataList/>
+</TestCase>
+<TestCase Comment="" Date="1401379157982" Name="mypackage.IntSet_fixedText:test_Inset_Getclass">
+<CovList>
+<CovPrefix CovItemPrefix="mypackage.IntSet_fixedText.java">
+<Cov CovItemId="S5" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList/>
+<ObjMetaDataList/>
+<MetaDataList/>
+</TestCase>
+<TestCase Comment="" Date="1401379157982" Name="mypackage.IntSet_fixedText:test_Inset_clone">
+<CovList>
+<CovPrefix CovItemPrefix="mypackage.IntSet_fixedText.java">
+<Cov CovItemId="S5" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList/>
+<ObjMetaDataList/>
+<MetaDataList/>
+</TestCase>
+<TestCase Comment="" Date="1401379157982" Name="mypackage.IntSet_fixedText:test_Inset_sub_Getclass">
+<CovList>
+<CovPrefix CovItemPrefix="mypackage.IntSet_fixedText.java">
+<Cov CovItemId="S5" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList/>
+<ObjMetaDataList/>
+<MetaDataList/>
+</TestCase>
+<TestCase Comment="" Date="1401379157982" Name="mypackage.IntSet_fixedText:test_Inset_sub_equals">
+<CovList>
+<CovPrefix CovItemPrefix="mypackage.IntSet_fixedText.java">
+<Cov CovItemId="S5" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+<Cov CovItemId="S8" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList/>
+<ObjMetaDataList/>
+<MetaDataList/>
+</TestCase>
+<TestCase Comment="" Date="1401379157992" Name="mypackage.IntSet_fixedText:test_Inset_sub_clone">
+<CovList>
+<CovPrefix CovItemPrefix="mypackage.IntSet_fixedText.java">
+<Cov CovItemId="S5" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList/>
+<ObjMetaDataList/>
+<MetaDataList/>
+</TestCase>
+<TestCase Comment="" Date="1401379157992" Name="mypackage.IntSet_fixedText:test_Inset_empty1">
+<CovList>
+<CovPrefix CovItemPrefix="mypackage.IntSet_fixedText.java">
+<Cov CovItemId="S10" Value="1"/>
+<Cov CovItemId="S5" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+<Cov CovItemId="S9" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList/>
+<ObjMetaDataList/>
+<MetaDataList/>
+</TestCase>
+<TestCase Comment="" Date="1401379157992" Name="mypackage.IntSet_fixedText:test_Inset_empt51">
+<CovList>
+<CovPrefix CovItemPrefix="mypackage.IntSet_fixedText.java">
+<Cov CovItemId="S11" Value="1"/>
+<Cov CovItemId="S5" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList/>
+<ObjMetaDataList/>
+<MetaDataList/>
+</TestCase>
+<TestCase Comment="" Date="1401379157992" Name="mypackage.IntSet_fixedText:test_Inset_empty2">
+<CovList>
+<CovPrefix CovItemPrefix="mypackage.IntSet_fixedText.java">
+<Cov CovItemId="S12" Value="1"/>
+<Cov CovItemId="S5" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList/>
+<ObjMetaDataList/>
+<MetaDataList/>
+</TestCase>
+<TestCase Comment="" Date="1401379157992" Name="mypackage.IntSet_fixedText:test_Inset_mcdc">
+<CovList>
+<CovPrefix CovItemPrefix="mypackage.IntSet_fixedText.java">
+<Cov CovItemId="S13" Value="1"/>
+<Cov CovItemId="S14" Value="1"/>
+<Cov CovItemId="S15" Value="1"/>
+<Cov CovItemId="S5" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList/>
+<ObjMetaDataList/>
+<MetaDataList/>
+</TestCase>
+<TestCase Comment="" Date="1401379157992" Name="mypackage.IntSet_fixedText:test_Inset_sub_size3">
+<CovList>
+<CovPrefix CovItemPrefix="mypackage.IntSet_fixedText.java">
+<Cov CovItemId="S16" Value="1"/>
+<Cov CovItemId="S17" Value="1"/>
+<Cov CovItemId="S5" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList/>
+<ObjMetaDataList/>
+<MetaDataList/>
+</TestCase>
+<TestCase Comment="" Date="1401379157992" Name="mypackage.IntSet_fixedText:test_Inset_isin">
+<CovList>
+<CovPrefix CovItemPrefix="mypackage.IntSet_fixedText.java">
+<Cov CovItemId="S18" Value="1"/>
+<Cov CovItemId="S5" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList/>
+<ObjMetaDataList/>
+<MetaDataList/>
+</TestCase>
+<TestCase Comment="" Date="1401379157992" Name="mypackage.IntSet_fixedText:test_Inset_isin2">
+<CovList>
+<CovPrefix CovItemPrefix="mypackage.IntSet_fixedText.java">
+<Cov CovItemId="S19" Value="1"/>
+<Cov CovItemId="S20" Value="1"/>
+<Cov CovItemId="S21" Value="1"/>
+<Cov CovItemId="S22" Value="1"/>
+<Cov CovItemId="S23" Value="1"/>
+<Cov CovItemId="S24" Value="1"/>
+<Cov CovItemId="S25" Value="1"/>
+<Cov CovItemId="S26" Value="1"/>
+<Cov CovItemId="S27" Value="1"/>
+<Cov CovItemId="S5" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList/>
+<ObjMetaDataList/>
+<MetaDataList/>
+</TestCase>
+<MetaDataList/>
+</TestSession>
+<TestSession Comment="" Date="1401379195728" Name="May 29, 2014 8:59:55 AM">
+<TestCase Comment="" Date="1401379195688" Name="mypackage.IntSet_fixedText:test_Inset_equals">
+<CovList>
+<CovPrefix CovItemPrefix="mypackage.IntSet_fixedText.java">
+<Cov CovItemId="S5" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+<Cov CovItemId="S7" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList/>
+<ObjMetaDataList/>
+<MetaDataList/>
+</TestCase>
+<TestCase Comment="" Date="1401379195688" Name="mypackage.IntSet_fixedText:test_Inset_Getclass">
+<CovList>
+<CovPrefix CovItemPrefix="mypackage.IntSet_fixedText.java">
+<Cov CovItemId="S5" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList/>
+<ObjMetaDataList/>
+<MetaDataList/>
+</TestCase>
+<TestCase Comment="" Date="1401379195688" Name="mypackage.IntSet_fixedText:test_Inset_clone">
+<CovList>
+<CovPrefix CovItemPrefix="mypackage.IntSet_fixedText.java">
+<Cov CovItemId="S5" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList/>
+<ObjMetaDataList/>
+<MetaDataList/>
+</TestCase>
+<TestCase Comment="" Date="1401379195688" Name="mypackage.IntSet_fixedText:test_Inset_sub_Getclass">
+<CovList>
+<CovPrefix CovItemPrefix="mypackage.IntSet_fixedText.java">
+<Cov CovItemId="S5" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList/>
+<ObjMetaDataList/>
+<MetaDataList/>
+</TestCase>
+<TestCase Comment="" Date="1401379195688" Name="mypackage.IntSet_fixedText:test_Inset_sub_equals">
+<CovList>
+<CovPrefix CovItemPrefix="mypackage.IntSet_fixedText.java">
+<Cov CovItemId="S5" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+<Cov CovItemId="S8" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList/>
+<ObjMetaDataList/>
+<MetaDataList/>
+</TestCase>
+<TestCase Comment="" Date="1401379195698" Name="mypackage.IntSet_fixedText:test_Inset_sub_clone">
+<CovList>
+<CovPrefix CovItemPrefix="mypackage.IntSet_fixedText.java">
+<Cov CovItemId="S5" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList/>
+<ObjMetaDataList/>
+<MetaDataList/>
+</TestCase>
+<TestCase Comment="" Date="1401379195698" Name="mypackage.IntSet_fixedText:test_Inset_empty1">
+<CovList>
+<CovPrefix CovItemPrefix="mypackage.IntSet_fixedText.java">
+<Cov CovItemId="S10" Value="1"/>
+<Cov CovItemId="S5" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+<Cov CovItemId="S9" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList/>
+<ObjMetaDataList/>
+<MetaDataList/>
+</TestCase>
+<TestCase Comment="" Date="1401379195698" Name="mypackage.IntSet_fixedText:test_Inset_empt51">
+<CovList>
+<CovPrefix CovItemPrefix="mypackage.IntSet_fixedText.java">
+<Cov CovItemId="S11" Value="1"/>
+<Cov CovItemId="S5" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList/>
+<ObjMetaDataList/>
+<MetaDataList/>
+</TestCase>
+<TestCase Comment="" Date="1401379195698" Name="mypackage.IntSet_fixedText:test_Inset_empty2">
+<CovList>
+<CovPrefix CovItemPrefix="mypackage.IntSet_fixedText.java">
+<Cov CovItemId="S12" Value="1"/>
+<Cov CovItemId="S5" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList/>
+<ObjMetaDataList/>
+<MetaDataList/>
+</TestCase>
+<TestCase Comment="" Date="1401379195698" Name="mypackage.IntSet_fixedText:test_Inset_mcdc">
+<CovList>
+<CovPrefix CovItemPrefix="mypackage.IntSet_fixedText.java">
+<Cov CovItemId="S13" Value="1"/>
+<Cov CovItemId="S14" Value="1"/>
+<Cov CovItemId="S15" Value="1"/>
+<Cov CovItemId="S5" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList/>
+<ObjMetaDataList/>
+<MetaDataList/>
+</TestCase>
+<TestCase Comment="" Date="1401379195698" Name="mypackage.IntSet_fixedText:test_Inset_sub_size3">
+<CovList>
+<CovPrefix CovItemPrefix="mypackage.IntSet_fixedText.java">
+<Cov CovItemId="S16" Value="1"/>
+<Cov CovItemId="S17" Value="1"/>
+<Cov CovItemId="S5" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList/>
+<ObjMetaDataList/>
+<MetaDataList/>
+</TestCase>
+<TestCase Comment="" Date="1401379195708" Name="mypackage.IntSet_fixedText:test_Inset_isin">
+<CovList>
+<CovPrefix CovItemPrefix="mypackage.IntSet_fixedText.java">
+<Cov CovItemId="S18" Value="1"/>
+<Cov CovItemId="S5" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList/>
+<ObjMetaDataList/>
+<MetaDataList/>
+</TestCase>
+<TestCase Comment="" Date="1401379195708" Name="mypackage.IntSet_fixedText:test_Inset_isin2">
+<CovList>
+<CovPrefix CovItemPrefix="mypackage.IntSet_fixedText.java">
+<Cov CovItemId="S19" Value="1"/>
+<Cov CovItemId="S20" Value="1"/>
+<Cov CovItemId="S21" Value="1"/>
+<Cov CovItemId="S22" Value="1"/>
+<Cov CovItemId="S23" Value="1"/>
+<Cov CovItemId="S24" Value="1"/>
+<Cov CovItemId="S25" Value="1"/>
+<Cov CovItemId="S26" Value="1"/>
+<Cov CovItemId="S27" Value="1"/>
+<Cov CovItemId="S5" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList/>
+<ObjMetaDataList/>
+<MetaDataList/>
+</TestCase>
+<MetaDataList/>
+</TestSession>
+</TestSessionContainer>
